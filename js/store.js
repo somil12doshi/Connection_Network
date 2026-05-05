@@ -111,7 +111,7 @@ export function seedIfNeeded() {
     { name: 'SAP',                       industry: 'Technology / ERP',             careerPage: 'https://sap.com/careers',                               logo: '' },
     { name: 'Qualcomm',                  industry: 'Technology / Semiconductors',  careerPage: 'https://qualcomm.com/careers',                          logo: '' },
     { name: 'Freightliner',              industry: 'Manufacturing / Automotive',   careerPage: 'https://jobs.daimler-truck.com',                        logo: '' },
-    { name: 'Phoenix Mecano',            industry: 'Manufacturing',                careerPage: 'https://phoenixmecano.com/careers',                     logo: '' },
+    { name: 'Applied Materials',         industry: 'Technology / Semiconductors',  careerPage: 'https://www.appliedmaterials.com/us/en/careers.html', logo: '' },
   ];
 
   const connections = [
@@ -138,7 +138,7 @@ export function seedIfNeeded() {
     { name: 'Sydney',          company: 'NOV',                       title: '', linkedin: '', email: '', phone: '', notes: '' },
     { name: 'Tochukwu',        company: 'BenrockEngies',             title: '', linkedin: '', email: '', phone: '', notes: '' },
     { name: 'Nupoor',          company: 'Alcon',                     title: '', linkedin: '', email: '', phone: '', notes: '' },
-    { name: 'Arvind',          company: '',                          title: '', linkedin: '', email: '', phone: '', notes: 'Company TBD' },
+    { name: 'Arvind',          company: 'Applied Materials',         title: '', linkedin: '', email: '', phone: '', notes: '' },
     { name: 'Abhinav',         company: 'Google',                    title: '', linkedin: '', email: '', phone: '', notes: '' },
     { name: 'Neel',            company: 'Amazon',                    title: '', linkedin: '', email: '', phone: '', notes: '' },
     { name: 'Rajvi',           company: 'LinkedIn',                  title: '', linkedin: '', email: '', phone: '', notes: '' },
