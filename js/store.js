@@ -54,7 +54,7 @@ export function isLoggedIn() {
   return sessionStorage.getItem(KEYS.session) === 'true';
 }
 export function login(user, pass) {
-  if (user === 'admin' && pass === 'admin') {
+  if (user === 'admin' && pass === 'admin2026') {
     sessionStorage.setItem(KEYS.session, 'true');
     return true;
   }
