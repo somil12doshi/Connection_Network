@@ -111,9 +111,12 @@
 
         <!-- ── Connections tab ── -->
         <div class="tab-content active" id="tab-connections">
-          <div class="table-toolbar">
+          <div class="table-toolbar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
             <h2>All Connections</h2>
-            <button class="btn btn-primary" id="add-conn-btn">+ Add Connection</button>
+            <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+              <input type="search" id="search-conn" class="form-input" placeholder="Search connections..." style="width:100%; max-width:250px;" />
+              <button class="btn btn-primary" id="add-conn-btn">+ Add Connection</button>
+            </div>
           </div>
           <div class="admin-table-wrap">
             <table class="admin-table">
@@ -133,9 +136,12 @@
 
         <!-- ── Companies tab ── -->
         <div class="tab-content" id="tab-companies">
-          <div class="table-toolbar">
+          <div class="table-toolbar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
             <h2>All Companies</h2>
-            <button class="btn btn-primary" id="add-comp-btn">+ Add Company</button>
+            <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+              <input type="search" id="search-comp" class="form-input" placeholder="Search companies..." style="width:100%; max-width:250px;" />
+              <button class="btn btn-primary" id="add-comp-btn">+ Add Company</button>
+            </div>
           </div>
           <div class="admin-table-wrap">
             <table class="admin-table">

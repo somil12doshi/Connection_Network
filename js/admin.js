@@ -88,14 +88,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   initAuth();
+  document.getElementById('search-conn')?.addEventListener('input', renderConnectionsTab);
+  document.getElementById('search-comp')?.addEventListener('input', renderCompaniesTab);
 });
 
 // ── Connections tab ───────────────────────────────────────────────
 function renderConnectionsTab() {
-  const conns = getConnections();
+  let conns = getConnections();
+  const searchInput = document.getElementById('search-conn');
+  const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+  
+  if (query) {
+    conns = conns.filter(c => 
+      c.name.toLowerCase().includes(query) || 
+      (c.company || '').toLowerCase().includes(query) ||
+      (c.title || '').toLowerCase().includes(query)
+    );
+  }
+
   const tbody = document.getElementById('conn-tbody');
   if (conns.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5" class="empty-state" style="text-align:center;padding:2rem;color:var(--text-muted)">No connections yet.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="5" class="empty-state" style="text-align:center;padding:2rem;color:var(--text-muted)">No connections found.</td></tr>`;
     return;
   }
   tbody.innerHTML = conns.map(c => `
@@ -211,10 +224,20 @@ document.getElementById('conn-form')?.addEventListener('submit', e => {
 
 // ── Companies tab ─────────────────────────────────────────────────
 function renderCompaniesTab() {
-  const comps = getCompanies();
+  let comps = getCompanies();
+  const searchInput = document.getElementById('search-comp');
+  const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+  
+  if (query) {
+    comps = comps.filter(c => 
+      c.name.toLowerCase().includes(query) || 
+      (c.industry || '').toLowerCase().includes(query)
+    );
+  }
+
   const tbody = document.getElementById('comp-tbody');
   if (comps.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="4" class="empty-state" style="text-align:center;padding:2rem;color:var(--text-muted)">No companies yet.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="4" class="empty-state" style="text-align:center;padding:2rem;color:var(--text-muted)">No companies found.</td></tr>`;
     return;
   }
   tbody.innerHTML = comps.map(c => `
