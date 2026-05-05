@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Companies – Connection Network</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/glass.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/companies.css" />
+</head>
+<body>
+  <div class="bg-mesh"></div>
+  <div class="bg-blob-mid"></div>
+
+  <div class="page-wrapper">
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a class="nav-brand" href="index.html">
+          <div class="nav-logo">CN</div>
+          <span class="nav-title">Connection <span>Network</span></span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link" aria-label="Connections">
+            👥 Connections
+            <span class="nav-count" id="nav-count-connections">—</span>
+          </a>
+          <a href="companies.html" class="nav-link active" aria-label="Companies">
+            🏢 Companies
+            <span class="nav-count" id="nav-count-companies">—</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="section">
+      <!-- Header -->
+      <div class="section-header">
+        <div>
+          <h1>Companies</h1>
+          <p class="sub">Explore where your network works</p>
+        </div>
+      </div>
+
+
+
+
+      <!-- Filter bar -->
+      <div class="company-filter-bar glass" style="display:flex; flex-direction:column; gap:1rem;">
+        <button class="btn btn-ghost" style="width:100%; display:flex; justify-content:space-between; align-items:center;" onclick="document.getElementById('filter-content').classList.toggle('hidden')">
+          <span style="font-weight:600; font-family:'Syne',sans-serif;">Filters ▼</span>
+          <span class="filter-stats" id="filter-stats"></span>
+        </button>
+        <div id="filter-content" class="filter-content hidden" style="display:flex; flex-direction:column; gap:0.75rem; width:100%;">
+          <div class="search-wrap">
+            <span class="search-icon">🔍</span>
+            <input
+              type="search"
+              id="search-input"
+              class="form-input search-input"
+              placeholder="Search by name or industry…"
+              aria-label="Search companies"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards grid -->
+      <div class="companies-grid" id="companies-grid"></div>
+    </main>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/companies.js"></script>
+</body>
+</html>

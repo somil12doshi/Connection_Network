@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin – Connection Network</title>
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/glass.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <div class="bg-mesh"></div>
+  <div class="bg-blob-mid"></div>
+
+  <div class="page-wrapper">
+
+    <!-- ── Login screen ── -->
+    <div id="login-screen" class="login-screen">
+      <div class="login-card glass" id="login-card">
+        <div class="login-logo">CN</div>
+        <h1 class="login-title">Admin Panel</h1>
+        <p class="login-sub">Sign in to manage your network</p>
+
+        <div class="login-error" id="login-error">Incorrect username or password.</div>
+
+        <form id="login-form" autocomplete="off">
+          <div class="form-group" style="margin-bottom:1rem">
+            <label class="form-label" for="login-user">Username</label>
+            <input type="text" id="login-user" class="form-input" placeholder="admin" autocomplete="username" required />
+          </div>
+          <div class="form-group" style="margin-bottom:1.5rem">
+            <label class="form-label" for="login-pass">Password</label>
+            <input type="password" id="login-pass" class="form-input" placeholder="••••••" autocomplete="current-password" required />
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Sign In →</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ── Admin panel ── -->
+    <div id="admin-panel">
+      <!-- Admin navbar -->
+      <nav class="admin-navbar">
+        <div class="admin-nav-inner">
+          <div class="admin-nav-brand">
+            <div class="nav-logo" style="width:32px;height:32px;font-size:0.9rem">CN</div>
+            <span class="nav-title" style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem">Connection <span style="color:var(--accent-cyan)">Network</span></span>
+            <span class="admin-badge">Admin</span>
+          </div>
+          <div class="admin-nav-actions">
+            <a href="index.html" class="btn btn-ghost btn-sm">← View Site</a>
+            <button id="logout-btn" class="btn btn-danger btn-sm">Sign Out</button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Admin main -->
+      <main class="section">
+        <div class="section-header">
+          <div>
+            <h1>Dashboard</h1>
+            <p class="sub">Manage connections and companies</p>
+          </div>
+        </div>
+
+        <!-- Stats bar -->
+        <div class="admin-stats-bar">
+          <div class="admin-stat glass">
+            <div class="admin-stat-value" id="astat-connections">—</div>
+            <div class="admin-stat-label">Connections</div>
+          </div>
+          <div class="admin-stat glass">
+            <div class="admin-stat-value" id="astat-companies">—</div>
+            <div class="admin-stat-label">Companies</div>
+          </div>
+          <div class="admin-stat glass">
+            <div class="admin-stat-value" id="astat-linkedin">—</div>
+            <div class="admin-stat-label">LinkedIn Linked</div>
+          </div>
+          <div class="admin-stat glass">
+            <div class="admin-stat-value" id="astat-email">—</div>
+            <div class="admin-stat-label">Emails Saved</div>
+          </div>
+        </div>
+
+        <!-- Graphify: completion progress bars -->
+        <div class="glass" style="padding:1.25rem 1.5rem;margin-bottom:1.5rem">
+          <div style="font-size:0.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem">Profile Completion</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div>
+              <div class="completion-label">
+                <span id="label-linkedin">LinkedIn coverage</span>
+              </div>
+              <div class="completion-track"><div class="completion-fill" id="fill-linkedin" style="width:0%"></div></div>
+            </div>
+            <div>
+              <div class="completion-label">
+                <span id="label-email">Email coverage</span>
+              </div>
+              <div class="completion-track"><div class="completion-fill" id="fill-email" style="width:0%;background:linear-gradient(90deg,var(--accent-purple),var(--accent-cyan))"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="tab-connections">👥 Connections</button>
+          <button class="tab-btn" data-tab="tab-companies">🏢 Companies</button>
+        </div>
+
+        <!-- ── Connections tab ── -->
+        <div class="tab-content active" id="tab-connections">
+          <div class="table-toolbar">
+            <h2>All Connections</h2>
+            <button class="btn btn-primary" id="add-conn-btn">+ Add Connection</button>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Company</th>
+                  <th>Title</th>
+                  <th>LinkedIn</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="conn-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ── Companies tab ── -->
+        <div class="tab-content" id="tab-companies">
+          <div class="table-toolbar">
+            <h2>All Companies</h2>
+            <button class="btn btn-primary" id="add-comp-btn">+ Add Company</button>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Industry</th>
+                  <th>Career Page</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="comp-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </div><!-- /page-wrapper -->
+
+  <!-- ── Connection modal ── -->
+  <div class="modal-overlay" id="conn-modal" role="dialog" aria-modal="true" aria-labelledby="conn-modal-title">
+    <div class="modal glass">
+      <div class="modal-header">
+        <h2 id="conn-modal-title">Add Connection</h2>
+        <button class="modal-close" aria-label="Close modal">×</button>
+      </div>
+      <form id="conn-form" novalidate>
+        <div class="form-grid">
+          <div class="form-group full">
+            <label class="form-label" for="conn-name">Name *</label>
+            <input type="text" id="conn-name" name="name" class="form-input" placeholder="Jane Doe" required />
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Company</label>
+            <select id="conn-company-select" class="form-input" aria-label="Select company"></select>
+            <input type="hidden" name="company" />
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="conn-title">Job Title</label>
+            <input type="text" id="conn-title" name="title" class="form-input" placeholder="Software Engineer" />
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="conn-linkedin">LinkedIn URL</label>
+            <input type="url" id="conn-linkedin" name="linkedin" class="form-input" placeholder="https://linkedin.com/in/…" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="conn-email">Email</label>
+            <input type="email" id="conn-email" name="email" class="form-input" placeholder="jane@example.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="conn-phone">Phone</label>
+            <input type="tel" id="conn-phone" name="phone" class="form-input" placeholder="+1-555-…" />
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="conn-notes">Notes</label>
+            <textarea id="conn-notes" name="notes" class="form-input" rows="2" placeholder="Met at UH career fair…"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" data-close-modal>Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Connection</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── Company modal ── -->
+  <div class="modal-overlay" id="comp-modal" role="dialog" aria-modal="true" aria-labelledby="comp-modal-title">
+    <div class="modal glass">
+      <div class="modal-header">
+        <h2 id="comp-modal-title">Add Company</h2>
+        <button class="modal-close" aria-label="Close modal">×</button>
+      </div>
+      <form id="comp-form" novalidate>
+        <div class="form-grid">
+          <div class="form-group full">
+            <label class="form-label" for="comp-name">Name *</label>
+            <input type="text" id="comp-name" name="name" class="form-input" placeholder="Halliburton" required />
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="comp-industry">Industry</label>
+            <input type="text" id="comp-industry" name="industry" class="form-input" placeholder="Energy / Oil & Gas" />
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="comp-career">Career Page URL</label>
+            <input type="url" id="comp-career" name="careerPage" class="form-input" placeholder="https://…/careers" />
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="comp-logo">Logo URL (optional)</label>
+            <input type="url" id="comp-logo" name="logo" class="form-input" placeholder="https://…/logo.png" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" data-close-modal>Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Company</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
