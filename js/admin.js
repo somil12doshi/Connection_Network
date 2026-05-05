@@ -141,15 +141,27 @@ function populateConnForm(conn) {
 }
 
 function populateCompanyDropdown(selected) {
-  const sel = document.getElementById('conn-company-select');
+  const dl = document.getElementById('company-datalist');
+  if (!dl) return;
   const companies = getCompanies();
-  sel.innerHTML = '<option value="">— No company —</option>' +
-    companies.map(c => `<option value="${escHtml(c.name)}" ${c.name === selected ? 'selected' : ''}>${escHtml(c.name)}</option>`).join('');
-  // sync hidden input immediately + on change
-  document.getElementById('conn-form').elements['company'].value = sel.value;
-  sel.onchange = () => {
-    document.getElementById('conn-form').elements['company'].value = sel.value;
+  dl.innerHTML = companies.map(c => `<option value="${escHtml(c.name)}"></option>`).join('');
+
+  const compInput = document.getElementById('conn-company');
+  const careerGroup = document.getElementById('conn-career-group');
+  const careerInput = document.getElementById('conn-careerPage');
+
+  compInput.oninput = () => {
+    const val = compInput.value.trim();
+    if (val && !companies.find(c => c.name.toLowerCase() === val.toLowerCase())) {
+      careerGroup.style.display = 'block';
+    } else {
+      careerGroup.style.display = 'none';
+      careerInput.value = '';
+    }
   };
+
+  compInput.value = selected || '';
+  compInput.oninput();
 }
 
 document.getElementById('add-conn-btn')?.addEventListener('click', () => {
@@ -163,9 +175,20 @@ document.getElementById('add-conn-btn')?.addEventListener('click', () => {
 document.getElementById('conn-form')?.addEventListener('submit', e => {
   e.preventDefault();
   const f = e.target;
+  const companyName = f.elements['company'].value.trim();
+  const careerPage = f.elements['careerPage'] ? f.elements['careerPage'].value.trim() : '';
+
+  if (companyName) {
+    const companies = getCompanies();
+    if (!companies.find(c => c.name.toLowerCase() === companyName.toLowerCase())) {
+      addCompany({ name: companyName, careerPage: careerPage, industry: '', logo: '' });
+      renderCompaniesTab();
+    }
+  }
+
   const data = {
     name:     f.elements['name'].value.trim(),
-    company:  f.elements['company'].value.trim(),
+    company:  companyName,
     title:    f.elements['title'].value.trim(),
     linkedin: f.elements['linkedin'].value.trim(),
     email:    f.elements['email'].value.trim(),
