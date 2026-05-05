@@ -39,7 +39,7 @@ function renderCard(conn, idx) {
       </div>
     </div>
     ${conn.company ? `<div class="card-company"><span class="pill">${escHtml(conn.company)}</span></div>` : ''}
-    ${conn.notes ? `<div class="card-notes">${escHtml(conn.notes)}</div>` : ''}
+
     <div class="card-actions">
       ${conn.linkedin ? `<a href="${conn.linkedin}" target="_blank" rel="noopener" class="btn btn-ghost btn-icon" ${li}>🔗 LinkedIn</a>` : ''}
       ${conn.email ? `<button onclick="copyToClipboard('${escHtml(conn.email)}', 'Email')" class="btn btn-ghost btn-icon" ${em}>✉ Email</button>` : ''}

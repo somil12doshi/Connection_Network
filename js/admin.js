@@ -142,7 +142,7 @@ function populateConnForm(conn) {
   f.elements['linkedin'].value  = conn.linkedin || '';
   f.elements['email'].value     = conn.email   || '';
   f.elements['phone'].value     = conn.phone   || '';
-  f.elements['notes'].value     = conn.notes   || '';
+
   populateCompanyDropdown(conn.company);
 }
 
@@ -201,7 +201,7 @@ document.getElementById('conn-form')?.addEventListener('submit', e => {
     linkedin: f.elements['linkedin'].value.trim(),
     email:    f.elements['email'].value.trim(),
     phone:    f.elements['phone'].value.trim(),
-    notes:    f.elements['notes'].value.trim(),
+
   };
   if (!data.name) return;
   const editId = f.dataset.editId;
