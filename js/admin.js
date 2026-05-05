@@ -147,27 +147,25 @@ function populateConnForm(conn) {
 }
 
 function populateCompanyDropdown(selected) {
-  const dl = document.getElementById('company-datalist');
-  if (!dl) return;
-  const companies = getCompanies();
-  dl.innerHTML = companies.map(c => `<option value="${escHtml(c.name)}"></option>`).join('');
-
   const compInput = document.getElementById('conn-company');
-  const careerGroup = document.getElementById('conn-career-group');
   const careerInput = document.getElementById('conn-careerPage');
+
+  compInput.value = selected || '';
+  
+  if (selected) {
+    const comp = getCompanies().find(c => c.name.toLowerCase() === selected.toLowerCase());
+    careerInput.value = comp ? (comp.careerPage || '') : '';
+  } else {
+    careerInput.value = '';
+  }
 
   compInput.oninput = () => {
     const val = compInput.value.trim();
-    if (val && !companies.find(c => c.name.toLowerCase() === val.toLowerCase())) {
-      careerGroup.style.display = 'block';
-    } else {
-      careerGroup.style.display = 'none';
-      careerInput.value = '';
+    const comp = getCompanies().find(c => c.name.toLowerCase() === val.toLowerCase());
+    if (comp && comp.careerPage) {
+      careerInput.value = comp.careerPage;
     }
   };
-
-  compInput.value = selected || '';
-  compInput.oninput();
 }
 
 document.getElementById('add-conn-btn')?.addEventListener('click', () => {
@@ -186,8 +184,12 @@ document.getElementById('conn-form')?.addEventListener('submit', e => {
 
   if (companyName) {
     const companies = getCompanies();
-    if (!companies.find(c => c.name.toLowerCase() === companyName.toLowerCase())) {
+    const existing = companies.find(c => c.name.toLowerCase() === companyName.toLowerCase());
+    if (!existing) {
       addCompany({ name: companyName, careerPage: careerPage, industry: '', logo: '' });
+      renderCompaniesTab();
+    } else if (careerPage && careerPage !== existing.careerPage) {
+      updateCompany(existing.id, { ...existing, careerPage: careerPage });
       renderCompaniesTab();
     }
   }
