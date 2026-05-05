@@ -84,24 +84,7 @@
           </div>
         </div>
 
-        <!-- Graphify: completion progress bars -->
-        <div class="glass" style="padding:1.25rem 1.5rem;margin-bottom:1.5rem">
-          <div style="font-size:0.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem">Profile Completion</div>
-          <div style="display:flex;flex-direction:column;gap:10px">
-            <div>
-              <div class="completion-label">
-                <span id="label-linkedin">LinkedIn coverage</span>
-              </div>
-              <div class="completion-track"><div class="completion-fill" id="fill-linkedin" style="width:0%"></div></div>
-            </div>
-            <div>
-              <div class="completion-label">
-                <span id="label-email">Email coverage</span>
-              </div>
-              <div class="completion-track"><div class="completion-fill" id="fill-email" style="width:0%;background:linear-gradient(90deg,var(--accent-purple),var(--accent-cyan))"></div></div>
-            </div>
-          </div>
-        </div>
+
 
         <!-- Tabs -->
         <div class="tab-bar">
@@ -113,9 +96,9 @@
         <div class="tab-content active" id="tab-connections">
           <div class="table-toolbar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
             <h2>All Connections</h2>
-            <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
-              <input type="search" id="search-conn" class="form-input" placeholder="Search connections..." style="width:100%; max-width:250px;" />
-              <button class="btn btn-primary" id="add-conn-btn">+ Add Connection</button>
+            <div style="display:flex; gap:1rem; align-items:center; flex-wrap:nowrap;">
+              <input type="search" id="search-conn" class="form-input" placeholder="Search connections..." style="max-width:250px;" />
+              <button class="btn btn-primary" id="add-conn-btn" style="white-space:nowrap;">+ Add Connection</button>
             </div>
           </div>
           <div class="admin-table-wrap">
@@ -138,9 +121,9 @@
         <div class="tab-content" id="tab-companies">
           <div class="table-toolbar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
             <h2>All Companies</h2>
-            <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
-              <input type="search" id="search-comp" class="form-input" placeholder="Search companies..." style="width:100%; max-width:250px;" />
-              <button class="btn btn-primary" id="add-comp-btn">+ Add Company</button>
+            <div style="display:flex; gap:1rem; align-items:center; flex-wrap:nowrap;">
+              <input type="search" id="search-comp" class="form-input" placeholder="Search companies..." style="max-width:250px;" />
+              <button class="btn btn-primary" id="add-comp-btn" style="white-space:nowrap;">+ Add Company</button>
             </div>
           </div>
           <div class="admin-table-wrap">

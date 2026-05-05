@@ -68,13 +68,6 @@ function renderStats() {
   document.getElementById('astat-companies').textContent   = comps.length;
   document.getElementById('astat-linkedin').textContent    = withLinkedIn;
   document.getElementById('astat-email').textContent       = withEmail;
-
-  const liPct  = conns.length ? Math.round(withLinkedIn / conns.length * 100) : 0;
-  const emPct  = conns.length ? Math.round(withEmail    / conns.length * 100) : 0;
-  document.getElementById('fill-linkedin').style.width = liPct + '%';
-  document.getElementById('fill-email').style.width    = emPct + '%';
-  document.getElementById('label-linkedin').textContent = `LinkedIn coverage — ${liPct}%`;
-  document.getElementById('label-email').textContent    = `Email coverage — ${emPct}%`;
 }
 
 // ── Tabs ──────────────────────────────────────────────────────────
